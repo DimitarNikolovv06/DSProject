@@ -1,0 +1,25 @@
+﻿@model DSProject.Models.PlanetaryModel
+
+@{
+    ViewBag.Title = "Planetary";
+}
+
+<h2>Planetary</h2>
+
+<div class="row">
+    <div class="col-md-6 position-relative">
+        <h4>
+            @Model.title
+        </h4>
+        <p class="m-3">
+            @Model.explanation
+        </p>
+        <p class="mt-4">
+            @Model.date
+        </p>
+    </div>
+    <div class="col-md-6">
+        <img src=@Model.url style="width: 100%; height: 100%"   />
+    </div>
+</div>
+

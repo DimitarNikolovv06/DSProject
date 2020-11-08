@@ -1,0 +1,41 @@
+﻿@model DSProject.Models.GithubJobPostModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Github Jobs</h2>
+
+<div class="container">
+
+    @using (Html.BeginForm("Index", "GithubJobPost", FormMethod.Get))
+    {
+        @Html.TextBoxFor(data => data.SearchParam, new { @class = "form-control" })
+
+        <button type="submit" style="margin-top: 10px" class="btn btn-primary mt-2">Search</button>
+    }
+
+    @if (Model.data != null)
+    {
+
+        foreach (var j in Model.data)
+        {
+            <div class="container-fluid">
+                <p style="margin: 15px 0 -10px; color: #888;">@j.type / @j.location</p>
+                <div style="border-bottom: 1px solid #ddd;" class="d-flex justify-content-between mb-2">
+                    <h1 style="margin: 15px 0 3px 0; padding-bottom: 15px; font-size: 22px; color: #294455;">@j.title</h1>
+                    <h3 style="margin: 15px 0 3px 0;">@j.company</h3>
+                </div>
+
+                <div style="margin-top: 10px; border-bottom: 1px solid black;" class="mt-1">
+                    @Html.Raw(@j.description)
+                    <h5>Job url: <a target="_blank" href=@j.url>@j.url</a> </h5>
+                </div>
+
+            </div>
+        }
+    }
+
+</div>
+

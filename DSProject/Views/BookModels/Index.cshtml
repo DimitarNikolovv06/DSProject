@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DSProject.Models.BookModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container-fluid">
+
+    @using (Html.BeginForm("Index", "BookModels", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                Name  @Html.TextBox("name", "", new { @class = "form-control", @placehorder = "name" })
+            </div>
+            <div class="col-md-3">
+                Year  @Html.TextBox("year", "", new { @class = "form-control", @placehorder = "year", type = "number" })
+            </div>
+            <div class="col-md-3">
+                Author  @Html.TextBox("author", "", new { @class = "form-control", @placehorder = "author" })
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-info mt-4">Filter</button>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

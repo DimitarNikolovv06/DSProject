@@ -1,0 +1,39 @@
+﻿@model DSProject.Models.WeatherModel
+
+@{
+    ViewBag.Title = "Weather";
+}
+
+<h1>Weather</h1>
+
+<div class="m-2">
+
+    @using (Html.BeginForm("Index", "Weather", FormMethod.Get))
+    {
+        @Html.TextBoxFor(data => data.City, new { @class = "form-control" })
+    <button style="margin-top: 15px;"  type="submit" class="btn btn-info">Get Data</button>
+    }
+
+
+    @if (Model.Weather != null)
+    {
+        <div class="row mt-2">
+            <div class="col-md-3">
+                Name: @Model.Weather.name
+            </div>
+            <div class="col-md-3" >
+                Description: @Model.Weather.weather[0].description
+            </div>
+            <div class="col-md-3" >
+                Temperature: @(Model.Weather.main.temp - 273.15)° C
+            </div>
+            <div class="col-md-3">
+               Wind Speed: @Model.Weather.wind.speed
+            </div>
+
+        </div>
+    }
+
+</div>
+
+
